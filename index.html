@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
-    
+
     <script>
         tailwind.config = {
             theme: {
@@ -17,279 +17,176 @@
                     colors: {
                         mocha: '#8C725B',
                         duskyOlive: '#5F6F52',
-                        powderRose: '#E8D8C8',
+                        powderRose: '#E8D0C8',
                         linenLight: '#FDFBF7',
                         backgroundLinen: '#F5EFE6',
-                        accentTerracotta: '#A94A4A',
+                        darkText: '#2C2A29',
+                        vibrantOrange: '#D96B27'
                     },
                     fontFamily: {
-                        serif: ['"Playfair Display"', 'serif'],
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        handwritten: ['"Caveat"', 'cursive'],
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        hand: ['Caveat', 'cursive'],
                     }
                 }
             }
         }
     </script>
-    <style>
-        html, body {
-            max-width: 100%;
-            overflow-x: hidden !important;
-            background-color: #F5EFE6;
-            color: #4A4A4A;
-        }
-        .vintage-card {
-            background-color: #FDFBF7;
-            border: 1px solid #E6D7C1;
-            box-shadow: 2px 2px 0px 0px rgba(95, 111, 82, 0.15);
-        }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-    </style>
 </head>
-<body class="font-sans antialiased min-h-screen flex flex-col w-full overflow-x-hidden">
+<body class="bg-backgroundLinen text-darkText font-sans antialiased selection:bg-powderRose selection:text-darkText min-h-screen flex flex-col">
 
-    <div class="bg-duskyOlive text-linenLight text-[11px] sm:text-xs py-2 px-3 text-center font-medium tracking-wide flex items-center justify-center gap-2 shadow-sm">
-        <span>🇵🇰 Authentic Handcrafted Journaling Supplies | Reasonable Prices</span>
+    <!-- Top Announcement Bar -->
+    <div class="bg-mocha text-linenLight text-xs md:text-sm py-2 px-4 text-center font-medium shadow-sm">
+        <i class="fa-solid fa-sparkles text-powderRose mr-2"></i> Custom Handcrafted Orders & Personalized Themes Available via Instagram! | Handcrafted in Pakistan 🇵🇰
     </div>
 
-    <header class="sticky top-0 z-40 bg-backgroundLinen/95 backdrop-blur-md border-b border-linenLight w-full">
-        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-2">
+    <!-- Header / Navbar -->
+    <header class="bg-linenLight/90 backdrop-blur-md sticky top-0 z-50 border-b border-mocha/10 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <button id="menu-toggle-btn" class="text-duskyOlive hover:text-accentTerracotta text-xl p-1 focus:outline-none">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-
-                <a href="#" class="flex items-center gap-2">
-                    <img src="1000284639.webp" alt="Stickify Pakistan Logo" class="w-9 h-9 object-contain rounded-full border border-duskyOlive/30 bg-white p-0.5 shadow-sm">
-                    <div>
-                        <h1 class="font-serif font-bold text-lg tracking-tight text-duskyOlive leading-none">Stickify</h1>
-                        <span class="text-[9px] font-handwritten text-accentTerracotta tracking-widest font-bold block">Pakistan</span>
-                    </div>
-                </a>
+                <img src="1000284639.webp" alt="Stickify Pakistan Logo" class="h-10 w-10 object-contain rounded-full border border-mocha/20">
+                <span class="font-serif font-bold text-xl md:text-2xl text-mocha tracking-tight">Stickify <span class="text-xs text-duskyOlive font-sans font-normal block">Pakistan</span></span>
             </div>
-
-            <div class="hidden sm:flex flex-1 max-w-xs mx-4 relative">
-                <input type="text" id="search-input" placeholder="Search supplies, tapes, stickers..." class="w-full pl-8 pr-3 py-1.5 bg-white border border-linenLight rounded-full text-xs text-mocha focus:outline-none focus:border-duskyOlive">
-                <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-xs text-mocha/50"></i>
-            </div>
-
-            <div class="flex items-center gap-2">
-                <a href="https://instagram.com/stickify_pakistan" target="_blank" class="hidden md:flex items-center gap-1 bg-powderRose/60 hover:bg-powderRose text-mocha px-3 py-1.5 rounded-xl text-xs font-semibold border border-linenLight">
-                    <i class="fa-brands fa-instagram text-accentTerracotta"></i> Instagram Chat
-                </a>
-                <button id="cart-btn" class="bg-duskyOlive hover:bg-duskyOlive/90 text-linenLight px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 shadow-sm">
-                    <i class="fa-solid fa-bag-shopping"></i>
-                    <span id="cart-count" class="bg-accentTerracotta text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
-                </button>
-            </div>
-        </div>
-
-        <div class="sm:hidden px-4 pb-2">
-            <div class="relative w-full">
-                <input type="text" placeholder="Search products..." class="w-full pl-8 pr-3 py-1.5 bg-white border border-linenLight rounded-full text-xs text-mocha focus:outline-none focus:border-duskyOlive">
-                <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-xs text-mocha/50"></i>
-            </div>
+            <a href="https://instagram.com/stickify_pakistan" target="_blank" onclick="playClickSound()" class="bg-vibrantOrange text-white text-xs md:text-sm px-4 py-2 rounded-full font-semibold hover:bg-opacity-90 transition shadow-sm flex items-center gap-2">
+                <i class="fa-brands fa-instagram text-base"></i> DM for Custom Orders
+            </a>
         </div>
     </header>
 
-    <div id="sidebar-menu" class="fixed inset-0 z-50 overflow-hidden hidden">
-        <div class="absolute inset-0 bg-black/40 backdrop-blur-xs" id="menu-backdrop"></div>
-        <div class="fixed inset-y-0 left-0 max-w-xs w-full bg-backgroundLinen shadow-2xl border-r border-linenLight flex flex-col justify-between p-6 overflow-y-auto">
-            <div>
-                <div class="flex items-center justify-between pb-4 border-b border-linenLight">
-                    <div class="flex items-center gap-2">
-                        <img src="1000284639.webp" alt="Logo" class="w-7 h-7 rounded-full bg-white p-0.5 border">
-                        <span class="font-serif font-bold text-duskyOlive text-base">Menu Options</span>
+    <!-- Main Content -->
+    <main class="flex-grow max-w-6xl mx-auto px-4 py-8 w-full">
+
+        <!-- Hero Section -->
+        <section class="mb-12 text-center md:text-left md:flex md:items-center md:justify-between bg-linenLight p-6 md:p-10 rounded-2xl border border-mocha/10 shadow-sm">
+            <div class="md:w-2/3 space-y-4">
+                <span class="bg-powderRose/40 text-mocha text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-block">Handcrafted From Scratch</span>
+                <h1 class="font-serif text-3xl md:text-5xl text-darkText font-bold leading-tight">Aesthetic & Handcrafted <br><span class="text-vibrantOrange italic font-normal">Journaling Supplies</span></h1>
+                <p class="text-gray-600 text-sm md:text-base max-w-lg">Hand-drawn and uniquely designed supplies for bullet journals, phone covers, and books. Highly aesthetic, affordable, and made locally in Karachi.</p>
+                <div class="pt-2 flex flex-wrap gap-3 justify-center md:justify-start">
+                    <a href="#phone-covers" onclick="playClickSound()" class="bg-mocha text-linenLight px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-opacity-90 transition">Phone Cover Journaling 📱</a>
+                    <a href="https://instagram.com/stickify_pakistan" target="_blank" onclick="playClickSound()" class="border border-mocha text-mocha px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-mocha/5 transition">Request Custom Theme ✨</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Notice & Disclaimers Section -->
+        <section id="phone-covers" class="mb-10 bg-white border-l-4 border-vibrantOrange p-5 rounded-r-xl shadow-sm space-y-4">
+            <h2 class="font-serif font-bold text-lg text-mocha flex items-center gap-2">
+                <i class="fa-solid fa-circle-info text-vibrantOrange"></i> Important Note for Phone Cover Orders
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-4 text-xs md:text-sm text-gray-700">
+                <div class="bg-backgroundLinen/50 p-3.5 rounded-lg border border-mocha/10 space-y-1">
+                    <p class="font-semibold text-darkText flex items-center gap-1.5">
+                        <span>📱</span> Standard Catalog Designs (HD Printed Covers)
+                    </p>
+                    <p>When selecting a design directly from our catalog, you will receive a high-quality <strong>HD printed phone cover</strong> featuring our aesthetic journaling layout (not individual 3D stickers attached). Durable, smooth, and lightweight for daily use!</p>
+                </div>
+
+                <div class="bg-powderRose/20 p-3.5 rounded-lg border border-powderRose/40 space-y-1">
+                    <p class="font-semibold text-darkText flex items-center gap-1.5">
+                        <span>✨</span> Custom Handcrafted Orders (Real 3D Stickers)
+                    </p>
+                    <p>Want real layered 3D stickers, textured paper, and custom physical elements? Custom handcrafted orders with real stickers are created exclusively on request! DM us on Instagram to request your personalized theme.</p>
+                </div>
+            </div>
+
+            <div class="bg-linenLight p-3 rounded-lg border border-mocha/10 text-xs text-gray-600 space-y-1">
+                <p class="font-semibold text-mocha">🎨 Theme & Sticker Variation Disclaimer:</p>
+                <p>For custom handcrafted orders, your chosen overall <strong>theme, aesthetic, and color palette will remain exactly as requested</strong>. However, individual sticker placements and specific sticker designs may slightly vary depending on stock availability. Every handcrafted case is uniquely one-of-a-kind!</p>
+            </div>
+        </section>
+
+        <!-- Product Gallery Section -->
+        <section class="space-y-6">
+            <div class="flex items-center justify-between border-b border-mocha/10 pb-3">
+                <h2 class="font-serif font-bold text-2xl text-darkText">Available Designs</h2>
+                <span class="text-xs text-mocha font-medium">Updated Catalog</span>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                <!-- Product Card 1 -->
+                <div class="bg-linenLight rounded-xl overflow-hidden border border-mocha/10 shadow-sm flex flex-col">
+                    <img src="1000385295.jpg" alt="Journaling Phone Case" class="w-full h-48 md:h-56 object-cover">
+                    <div class="p-4 flex-grow flex flex-col justify-between space-y-2">
+                        <div>
+                            <h3 class="font-semibold text-sm md:text-base text-darkText">Aesthetic Vintage Case</h3>
+                            <p class="text-xs text-gray-500">HD Printed / Custom Real 3D</p>
+                        </div>
+                        <a href="https://instagram.com/stickify_pakistan" target="_blank" onclick="playClickSound()" class="block text-center bg-mocha/10 text-mocha text-xs font-semibold py-2 rounded hover:bg-mocha hover:text-white transition">Order on Instagram</a>
                     </div>
-                    <button id="close-menu-btn" class="text-duskyOlive hover:text-accentTerracotta text-lg">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
                 </div>
 
-                <div class="py-4 space-y-4">
-                    <a href="#catalog" class="block font-serif font-bold text-duskyOlive text-base hover:text-accentTerracotta" onclick="toggleMenu()">
-                        <i class="fa-solid fa-house mr-2 text-xs"></i> Home (All Products)
-                    </a>
-
-                    <div class="space-y-2 pt-2 border-t border-linenLight">
-                        <span class="text-[10px] uppercase tracking-widest font-bold text-accentTerracotta">Categories</span>
-                        <ul class="space-y-2 pl-2 text-xs text-mocha font-medium">
-                            <li><a href="#catalog" class="hover:text-duskyOlive block" onclick="toggleMenu()">🌸 Washi Tapes</a></li>
-                            <li><a href="#phone-case-journaling" class="hover:text-duskyOlive block" onclick="toggleMenu()">📱 Phone Cover Journaling</a></li>
-                            <li><a href="#catalog" class="hover:text-duskyOlive block" onclick="toggleMenu()">📜 Journaling Papers</a></li>
-                            <li><a href="#catalog" class="hover:text-duskyOlive block" onclick="toggleMenu()">✍️ Journaling Words</a></li>
-                            <li><a href="#catalog" class="hover:text-duskyOlive block" onclick="toggleMenu()">🎀 Journaling Girls</a></li>
-                            <li><a href="#catalog" class="hover:text-duskyOlive block" onclick="toggleMenu()">✨ Journaling Stickers (All Varieties)</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="space-y-2 pt-2 border-t border-linenLight text-xs text-mocha font-medium">
-                        <a href="#custom-a4" class="block hover:text-duskyOlive" onclick="toggleMenu()">📄 Upload Custom A4 Sheet</a>
-                        <a href="#iphone-tester" class="block hover:text-duskyOlive" onclick="toggleMenu()">📱 Interactive Sticker Tester</a>
+                <!-- Product Card 2 -->
+                <div class="bg-linenLight rounded-xl overflow-hidden border border-mocha/10 shadow-sm flex flex-col">
+                    <img src="1000385285.jpg" alt="Journaling Phone Case" class="w-full h-48 md:h-56 object-cover">
+                    <div class="p-4 flex-grow flex flex-col justify-between space-y-2">
+                        <div>
+                            <h3 class="font-semibold text-sm md:text-base text-darkText">Floral Journal Theme</h3>
+                            <p class="text-xs text-gray-500">HD Printed / Custom Real 3D</p>
+                        </div>
+                        <a href="https://instagram.com/stickify_pakistan" target="_blank" onclick="playClickSound()" class="block text-center bg-mocha/10 text-mocha text-xs font-semibold py-2 rounded hover:bg-mocha hover:text-white transition">Order on Instagram</a>
                     </div>
                 </div>
-            </div>
 
-            <div class="pt-4 border-t border-linenLight text-center">
-                <a href="https://instagram.com/stickify_pakistan" target="_blank" class="w-full bg-duskyOlive text-white py-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-2">
-                    <i class="fa-brands fa-instagram"></i> Message on Instagram
-                </a>
-            </div>
-        </div>
-    </div>
+                <!-- Product Card 3 -->
+                <div class="bg-linenLight rounded-xl overflow-hidden border border-mocha/10 shadow-sm flex flex-col">
+                    <img src="1000385288.jpg" alt="Journaling Phone Case" class="w-full h-48 md:h-56 object-cover">
+                    <div class="p-4 flex-grow flex flex-col justify-between space-y-2">
+                        <div>
+                            <h3 class="font-semibold text-sm md:text-base text-darkText">Retro Stamp Edition</h3>
+                            <p class="text-xs text-gray-500">HD Printed / Custom Real 3D</p>
+                        </div>
+                        <a href="https://instagram.com/stickify_pakistan" target="_blank" onclick="playClickSound()" class="block text-center bg-mocha/10 text-mocha text-xs font-semibold py-2 rounded hover:bg-mocha hover:text-white transition">Order on Instagram</a>
+                    </div>
+                </div>
 
-    <div class="bg-powderRose/60 text-mocha text-[11px] sm:text-xs px-4 py-2 border-b border-linenLight text-center font-medium">
-        <i class="fa-solid fa-sun mr-1 text-accentTerracotta"></i>
-        <b>Precaution:</b> Recommended for indoor journaling, books, and phone cases. Keep away from direct sunlight to prevent color fading!
-    </div>
-
-    <section class="max-w-6xl mx-auto px-4 py-8 sm:py-12 w-full">
-        <div class="grid md:grid-cols-2 gap-8 items-center">
-            <div class="space-y-4 text-center md:text-left">
-                <span class="inline-block bg-linenLight text-mocha px-3 py-1 rounded-full text-[11px] font-semibold border border-linenLight">
-                    🌸 Handcrafted From Scratch in Pakistan
-                </span>
-                <h1 class="font-serif text-3xl sm:text-5xl text-duskyOlive font-bold leading-tight">
-                    Aesthetic & Handcrafted <span class="text-accentTerracotta italic">Journaling</span> Supplies
-                </h1>
-                <p class="text-mocha text-xs sm:text-sm leading-relaxed max-w-md mx-auto md:mx-0">
-                    Hand-drawn and uniquely designed supplies for bullet journals, phone covers, and books. Highly aesthetic, affordable, and made locally in Karachi.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-3 pt-2 justify-center md:justify-start">
-                    <a href="#catalog" class="bg-duskyOlive text-linenLight font-semibold px-6 py-3 rounded-xl text-xs text-center shadow-md">
-                        Shop All Supplies
-                    </a>
-                    <a href="#phone-case-journaling" class="bg-linenLight text-mocha font-semibold px-5 py-3 rounded-xl text-xs border border-linenLight text-center">
-                        Phone Cover Journaling 📱
-                    </a>
+                <!-- Product Card 4 -->
+                <div class="bg-linenLight rounded-xl overflow-hidden border border-mocha/10 shadow-sm flex flex-col">
+                    <img src="1000385291.jpg" alt="Journaling Phone Case" class="w-full h-48 md:h-56 object-cover">
+                    <div class="p-4 flex-grow flex flex-col justify-between space-y-2">
+                        <div>
+                            <h3 class="font-semibold text-sm md:text-base text-darkText">Minimalist Journaling</h3>
+                            <p class="text-xs text-gray-500">HD Printed / Custom Real 3D</p>
+                        </div>
+                        <a href="https://instagram.com/stickify_pakistan" target="_blank" onclick="playClickSound()" class="block text-center bg-mocha/10 text-mocha text-xs font-semibold py-2 rounded hover:bg-mocha hover:text-white transition">Order on Instagram</a>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="flex justify-center">
-                <div class="w-64 h-64 sm:w-80 sm:h-80 bg-white p-3 rounded-2xl shadow-md border border-linenLight rotate-1">
-                    <img src="1000385295.jpg" alt="Phone Case Journaling Sample" class="w-full h-full object-cover rounded-xl">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <main id="catalog" class="max-w-6xl mx-auto px-4 py-8 w-full">
-        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-6 gap-4 border-b border-linenLight pb-4">
-            <div>
-                <span class="text-[10px] uppercase tracking-widest font-bold text-accentTerracotta">Handcrafted Supplies</span>
-                <h2 class="font-serif text-2xl sm:text-3xl text-duskyOlive font-bold">All Products & Varieties</h2>
-            </div>
-            <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-2 text-xs">
-                <button class="px-3 py-1.5 bg-duskyOlive text-white rounded-full text-[11px] font-medium whitespace-nowrap">Home (All)</button>
-                <button class="px-3 py-1.5 bg-linenLight text-mocha rounded-full text-[11px] font-medium whitespace-nowrap border border-linenLight">Washi Tapes</button>
-                <button class="px-3 py-1.5 bg-linenLight text-mocha rounded-full text-[11px] font-medium whitespace-nowrap border border-linenLight">Papers</button>
-                <button class="px-3 py-1.5 bg-linenLight text-mocha rounded-full text-[11px] font-medium whitespace-nowrap border border-linenLight">Words</button>
-                <button class="px-3 py-1.5 bg-linenLight text-mocha rounded-full text-[11px] font-medium whitespace-nowrap border border-linenLight">Girls</button>
-                <button class="px-3 py-1.5 bg-linenLight text-mocha rounded-full text-[11px] font-medium whitespace-nowrap border border-linenLight">Stickers</button>
-            </div>
-        </div>
-
-        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="vintage-card rounded-2xl p-4 flex flex-col justify-between space-y-3">
-                <div class="relative">
-                    <img src="1000385285.jpg" class="w-full h-44 object-cover rounded-xl" alt="Product Image">
-                    <span class="absolute top-2 left-2 bg-duskyOlive text-white text-[9px] uppercase font-bold px-2 py-0.5 rounded">Pack of 30</span>
-                </div>
-                <div>
-                    <h3 class="font-serif font-bold text-duskyOlive text-sm">Aesthetic Journal Sticker Pack</h3>
-                    <p class="text-xs text-mocha mt-1">High quality 135 GSM glossy prints for bullet journaling & books.</p>
-                </div>
-                <div class="pt-2 border-t border-linenLight flex items-center justify-between">
-                    <span class="font-serif font-bold text-duskyOlive text-sm">PKR [Price]</span>
-                    <button onclick="openCheckoutModal()" class="bg-duskyOlive text-linenLight text-xs font-semibold px-3.5 py-1.5 rounded-lg flex items-center gap-1">
-                        <i class="fa-solid fa-cart-plus"></i> Buy / Order
-                    </button>
-                </div>
-            </div>
-        </div>
     </main>
 
-    <section id="phone-case-journaling" class="max-w-6xl mx-auto px-4 py-10 w-full">
-        <div class="bg-linenLight border border-linenLight rounded-3xl p-6 sm:p-8 shadow-sm space-y-8">
-            <div>
-                <span class="text-xs uppercase font-bold text-accentTerracotta tracking-wider">Custom Handcrafted Art</span>
-                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-duskyOlive">Phone Cover Journaling 📱</h2>
-                <p class="text-xs sm:text-sm text-mocha mt-1 leading-relaxed">
-                    We create custom handcrafted journaling layouts specifically sized for your mobile phone cover! Browse through our available designs below, pick your favorite design name, and submit your phone model.
-                    Theme & color palette will match your selection, but individual stickers may vary based on stock availability. Every handcrafted cover is unique!
-                </p>
-            </div>
-
-            <div class="bg-backgroundLinen p-5 rounded-2xl border border-linenLight space-y-4 max-w-xl">
-                <div>
-                    <label class="block text-xs font-semibold text-mocha mb-1">1. Enter Your Mobile Phone Model:</label>
-                    <input type="text" placeholder="e.g., iPhone 13, Samsung S21, Redmi Note 10" class="w-full px-3 py-2.5 bg-white border border-linenLight rounded-xl text-xs focus:outline-none focus:border-duskyOlive">
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold text-mocha mb-1">2. Select Your Preferred Design Name:</label>
-                    <select class="w-full px-3 py-2.5 bg-white border border-linenLight rounded-xl text-xs text-mocha">
-                        <option value="">-- Choose Design Name --</option>
-                        <option value="design-1">Design #1 - pink theme</option>
-                        <option value="design-2">Design #2 - Butterfly Theme</option>
-                        <option value="design-3">Design #3 - vintage theme</option>
-                    </select>
-                  <p class="text-xs sm:text-sm text-mocha mt-1 leading-relaxed">  Don't see your favorite theme? We create custom designs according to your preference! DM us on Instagram to choose your own theme, color aesthetic, and sticker style.
-                  </p>
-                </div>
-                <button type="button" onclick="openCheckoutModal()" class="w-full bg-duskyOlive text-linenLight font-semibold py-3 rounded-xl text-xs flex items-center justify-center gap-2 shadow-sm">
-                    <i class="fa-brands fa-instagram text-white text-sm"></i> Order Cover Journaling via Instagram
-                </button>
-            </div>
-
-            <div class="space-y-3 border-t border-powderRose/60 pt-6">
-                <h3 class="font-serif font-bold text-duskyOlive text-lg">Available Designs Gallery</h3>
-                
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 pt-2">
-                    <div class="bg-white p-3 rounded-2xl border border-linenLight shadow-sm flex flex-col items-center">
-                        <div class="w-full h-64 rounded-xl overflow-hidden mb-2">
-                            <img src="1000385295.jpg" alt="Design #1" class="w-full h-full object-cover">
-                        </div>
-                        <span class="font-serif font-bold text-duskyOlive text-xs">Design #1</span>
-                        <span class="text-[11px] text-mocha font-medium">Vintage Rose Aesthetic</span>
-                    </div>
-
-                    <div class="bg-white p-3 rounded-2xl border border-linenLight shadow-sm flex flex-col items-center justify-center min-h-[280px]">
-                        <div class="w-full h-64 bg-backgroundLinen rounded-xl flex flex-col items-center justify-center text-center p-4 border border-dashed border-mocha/30">
-                            <i class="fa-solid fa-image text-3xl text-mocha/30 mb-2"></i>
-                            <span class="text-xs text-mocha font-medium">Upload Image Here</span>
-                        </div>
-                        <span class="font-serif font-bold text-duskyOlive text-xs mt-2">Design #2</span>
-                        <span class="text-[11px] text-mocha font-medium">Botanical Butterfly Theme</span>
-                    </div>
-
-                    <div class="bg-white p-3 rounded-2xl border border-linenLight shadow-sm flex flex-col items-center justify-center min-h-[280px]">
-                        <div class="w-full h-64 bg-backgroundLinen rounded-xl flex flex-col items-center justify-center text-center p-4 border border-dashed border-mocha/30">
-                            <i class="fa-solid fa-image text-3xl text-mocha/30 mb-2"></i>
-                            <span class="text-xs text-mocha font-medium">Upload Image Here</span>
-                        </div>
-                        <span class="font-serif font-bold text-duskyOlive text-xs mt-2">Design #3</span>
-                        <span class="text-[11px] text-mocha font-medium">Retro Newspaper Collage</span>
-                    </div>
-                </div>
-            </div>
+    <!-- Footer -->
+    <footer class="bg-linenLight border-t border-mocha/10 py-6 mt-12">
+        <div class="max-w-6xl mx-auto px-4 text-center text-xs text-gray-500 space-y-2">
+            <p class="font-serif text-sm font-semibold text-mocha">Stickify Pakistan</p>
+            <p>Handcrafted Journaling & Phone Covers | Karachi, Pakistan</p>
+            <p class="pt-2">Direct all inquiries & custom orders to our Instagram <a href="https://instagram.com/stickify_pakistan" target="_blank" onclick="playClickSound()" class="text-vibrantOrange underline font-medium">@stickify_pakistan</a></p>
         </div>
-    </section>
+    </footer>
 
-    <section id="custom-a4" class="max-w-6xl mx-auto px-4 py-8 w-full">
-        <div class="vintage-card p-6 sm:p-8 rounded-3xl space-y-4">
-            <span class="text-xs uppercase font-bold text-accentTerracotta">Print Custom Layouts</span>
-            <h2 class="font-serif text-2xl font-bold text-duskyOlive">Upload Custom A4 Sticker Sheet</h2>
-            <p class="text-xs text-mocha leading-relaxed">
-                We print on high quality **135 GSM Glossy A4 Sheets**. If you have your own customized designs or images, upload your file here.
-            </p>
-            <div class="flex flex-col sm:flex-row items-center gap-4 pt-2">
-                <input type="file" class="text-xs text-mocha file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-duskyOlive file:text-linenLight cursor-pointer">
-                <button onclick="openCheckoutModal()" class="w-full sm:w-auto bg-duskyOlive text-linenLight px-6 py-2.5 rounded-xl text-xs font-semibold">Submit & Order</button>
-            </div>
-        </div>
-    </section>
+    <!-- Cute Pop Click Sound Script -->
+    <script>
+        function playClickSound() {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
 
-    <div id="checkout-modal" class="fixed inset-0 z-50 overflow-hidden hidden flex items-center justify-center p-4">
-        <div class="absolute inset-0 bg-black/50 backdrop-blur-xs" onclick="closeCheckoutModal()"></div>
-        <div class="relative bg-backgroundLinen border border-linenLight max-w-lg w-full rounded-3xl p-6 shadow-2xl space-y-
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(800, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(400, ctx.currentTime + 0.05);
+
+            gain.gain.setValueAtTime(0.15, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.05);
+
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+
+            osc.start();
+            osc.stop(ctx.currentTime + 0.05);
+        }
+    </script>
+
+</body>
+</html>
